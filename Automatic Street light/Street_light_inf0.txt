@@ -1,0 +1,57 @@
+const int a=A0;
+int b=0;
+const int ir1=D1;
+const int ir2=D2;
+const int ir3=D3;
+const int led1=D5;
+const int led2=D6;
+const int led3=D7;
+void setup() {
+Serial.begin(115200);
+pinMode(led1, OUTPUT);
+pinMode(led2, OUTPUT);
+pinMode(led3, OUTPUT);
+pinMode(ir1, INPUT);
+pinMode(ir2, INPUT);
+pinMode(ir3, INPUT);
+Serial.begin(9600);
+}
+void loop() {
+int c=digitalRead(ir1);
+int d=digitalRead(ir2);
+int e=digitalRead(ir3);
+Serial.print("c:");
+Serial.println(c);
+Serial.print("d:");
+Serial.println(d);
+Serial.print("e:");
+Serial.println(e);
+b=analogRead(a);
+Serial.println(b);
+if(b<=300)
+{
+digitalWrite(led1, LOW);
+digitalWrite(led2, LOW);
+digitalWrite(led3, LOW);
+}
+else{
+if(c==0){
+digitalWrite(led1, HIGH);
+}
+else{
+digitalWrite(led1,LOW);
+}
+if(d==0){
+digitalWrite(led2, HIGH);
+}
+else{
+digitalWrite(led2,LOW);
+}
+if(e==0){
+digitalWrite(led3, HIGH);
+}
+else{
+digitalWrite(led3,LOW);
+}
+}
+}
